@@ -13,7 +13,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primaryColor: Colors.blue),
+      theme: ThemeData(
+        tabBarTheme: TabBarTheme(
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.white,
+          indicator: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: Colors.white,
+                width: 3.0,
+              ),
+            ),
+          ),
+        ),
+
+      ),
       home: const HomePage(),
     );
   }

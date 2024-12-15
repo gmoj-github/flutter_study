@@ -1,30 +1,53 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:my_flutter_project/pages/hello_listview.dart';
 import 'package:my_flutter_project/pages/hello_page2.dart';
 import 'package:my_flutter_project/pages/hello_page3.dart';
 import 'package:my_flutter_project/utils/navigation.dart';
 import 'package:my_flutter_project/widgets/blue_button.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:my_flutter_project/widgets/drawer_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Hello Flutter!",
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            "Hello Flutter!",
+          ),
+          bottom: TabBar(tabs: [
+            Tab(
+              text: "TAB 1",
+            ),
+            Tab(
+              text: "TAB 2",
+            ),
+            Tab(
+              text: "TAB 3",
+            ),
+          ]),
+          centerTitle: true,
+          backgroundColor: Colors.blue,
+          foregroundColor: Colors.white,
         ),
-        centerTitle: true,
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
-      ),
-      body: _body(context),
-      floatingActionButton: _buildFloatingActionButton(),
-      drawer: Drawer(
-
+        body: TabBarView(
+          children: [
+            _body(context),
+            Container(
+              color: Colors.green,
+            ),
+            Container(
+              color: Colors.yellow,
+            ),
+          ],
+        ),
+        floatingActionButton: _buildFloatingActionButton(),
+        drawer: DrawerList(),
       ),
     );
   }
